@@ -104,8 +104,7 @@
     <Link>
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
+      <EntryPointSymbol>WinMain</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
