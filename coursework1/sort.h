@@ -21,12 +21,14 @@ class Program
 	string directory;
 
 public:
+
 	class Array
 	{
 		int random[n];
 		int sorted[n];
 
 	public:
+
 		void generate();// int*);
 		void copy();
 		void output(string, int);
@@ -34,20 +36,33 @@ public:
 
 	}array;
 
-	class Sort
+	struct Sort
 	{
+		struct Merge
+		{
+			void divide(int*, int, int);
+			void sort(int*, int, int, int);
+
+		}merge;
+
+		struct Quick
+		{
+			void sort(int*, int, int);
+			void swap(int*, int*);
+			int  partition(int*, int, int);
+
+		}quick;
+		
+		struct Tree
+		{
+			void tree();
 
 
-	public:
-		void merge_divide(int*, int, int);
-		void merge_sort(int*, int, int, int);
-
-		void quick();
-		void tree();
+		}tree;
 
 	}sort;
 
-	void set_dir(System::Windows::Forms::TextBox^);// , System::Windows::Forms::Label^);
+	void   set_dir(System::Windows::Forms::TextBox^);// , System::Windows::Forms::Label^);
 	string get_dir();
 	
 	

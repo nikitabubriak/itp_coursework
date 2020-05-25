@@ -4,7 +4,6 @@
 #include <msclr\marshal_cppstd.h>
 
 using namespace std;
-//using namespace coursework1;
 
 
 
@@ -24,13 +23,6 @@ string Program::get_dir()
 {
 	//string dir = this->directory;
 	return this->directory;
-}
-
-
-
-int* Program::Array::get_array()
-{
-	return this->sorted;
 }
 
 
@@ -64,7 +56,7 @@ void Program::Array::output(string output, int s)
 
 	switch (s)
 	{
-	case 0: out += "/random_array.txt";
+	case 0: out += "/array_random.txt";
 			break;
 	case 1: out += "/merge_sort.txt";
 			break;
@@ -102,7 +94,14 @@ void Program::Array::output(string output, int s)
 
 
 
-void Program::Sort::merge_divide(int *a, int low, int high)
+int* Program::Array::get_array()
+{
+	return this->sorted;
+}
+
+
+
+void Program::Sort::Merge::divide(int *a, int low, int high)
 {
 	int mid;
 
@@ -110,16 +109,16 @@ void Program::Sort::merge_divide(int *a, int low, int high)
 	{
 		mid = (low + high) / 2;
 
-		merge_divide(a, low, mid);
-		merge_divide(a, mid + 1, high);
+		divide(a, low, mid);
+		divide(a, mid + 1, high);
 
-		merge_sort(a, low, high, mid);
+		sort(a, low, high, mid);
 	}
 }
 
 
 
-void Program::Sort::merge_sort(int *a, int low, int high, int mid)
+void Program::Sort::Merge::sort(int *a, int low, int high, int mid)
 {
 	int t[n + 1];
 
@@ -164,14 +163,52 @@ void Program::Sort::merge_sort(int *a, int low, int high, int mid)
 	}
 }
 
-void Program::Sort::quick()
-{
 
+
+void Program::Sort::Quick::sort(int *a, int low, int high)
+{
+	if (low < high)
+	{
+		int pivot = partition(a, low, high);
+
+		sort(a, low, pivot - 1);
+		sort(a, pivot + 1, high);
+	}
 }
 
 
 
-void Program::Sort::tree()
+void Program::Sort::Quick::swap(int *a, int *b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
+}
+
+
+
+int Program::Sort::Quick::partition(int *a, int low, int high)
+{
+	int pivot = a[high], 
+		i = low - 1;
+
+	for (int j = low; j <= high - 1; j++)
+	{
+		if (a[j] <= pivot)
+		{
+			i++;
+			swap(&a[i], &a[j]);
+		}
+	}
+
+	swap(&a[i + 1], &a[high]);
+
+	return (i + 1);
+}
+
+
+
+void Program::Sort::Tree::tree()
 {
 
 }

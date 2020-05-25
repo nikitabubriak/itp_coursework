@@ -42,6 +42,9 @@ namespace coursework1 {
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
 	protected:
 
 	private:
@@ -64,6 +67,9 @@ namespace coursework1 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -72,7 +78,6 @@ namespace coursework1 {
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(180, 20);
 			this->textBox1->TabIndex = 0;
-			this->textBox1->Text = L"( Please enter the directory )";
 			this->textBox1->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &GUI::textBox1_TextChanged);
 			// 
@@ -109,11 +114,11 @@ namespace coursework1 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(131, 227);
+			this->label1->Location = System::Drawing::Point(49, 195);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(10, 13);
+			this->label1->Size = System::Drawing::Size(36, 13);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"-";
+			this->label1->Text = L"Done!";
 			this->label1->Click += gcnew System::EventHandler(this, &GUI::label1_Click);
 			// 
 			// button4
@@ -137,12 +142,44 @@ namespace coursework1 {
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			this->label2->Click += gcnew System::EventHandler(this, &GUI::label2_Click);
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(122, 195);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(36, 13);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Done!";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(196, 195);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(36, 13);
+			this->label4->TabIndex = 8;
+			this->label4->Text = L"Done!";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(81, 20);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(119, 13);
+			this->label5->TabIndex = 9;
+			this->label5->Text = L"Please enter the directory:";
+			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->label5->Click += gcnew System::EventHandler(this, &GUI::label5_Click);
+			// 
 			// GUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
 			this->ClientSize = System::Drawing::Size(284, 262);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->label1);
@@ -164,7 +201,10 @@ namespace coursework1 {
 		button2->Enabled = false;
 		button3->Enabled = false;
 		button4->Enabled = false;
+		label1->Visible = false;
 		label2->Visible = false;
+		label3->Visible = false;
+		label4->Visible = false;
 	}
 	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) 
 	{
@@ -177,17 +217,23 @@ namespace coursework1 {
 	{
 		program.array.copy();
 
-		program.sort.merge_divide(program.array.get_array(), m, n);
+		program.sort.merge.divide(program.array.get_array(), m, n - 1);
 
 		program.array.output(program.get_dir(), 1);
+
+		button1->Enabled = false;
+		label1->Visible = true;
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
 		program.array.copy();
 
-
+		program.sort.quick.sort(program.array.get_array(), m, n - 1);
 
 		program.array.output(program.get_dir(), 2);
+
+		button2->Enabled = false;
+		label3->Visible = true;
 	}
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
@@ -196,6 +242,9 @@ namespace coursework1 {
 
 
 		program.array.output(program.get_dir(), 3);
+
+		button3->Enabled = false;
+		label4->Visible = true;
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
@@ -212,6 +261,8 @@ namespace coursework1 {
 	}
 	private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
+private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  e) {
+}
 };
 
 }
