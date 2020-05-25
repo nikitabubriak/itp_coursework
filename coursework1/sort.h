@@ -5,26 +5,29 @@
 #include <string>
 #include <ctime>
 
+#include "GUI.h"
+
 using namespace std;
 
 const int n = 1024;
 
-class program
+
+class Program
 {
 	string directory;
 
 public:
-	class array
+	class Array
 	{
 		int random[n];
 		int sorted[n];
 
 	public:
-		void generate();
-		void output();
+		void generate(int*);
+		void output(string);
 	};
 
-	class sort
+	class Sort
 	{
 
 
@@ -34,9 +37,14 @@ public:
 		void tree();
 	};
 
-	string init();
-};
+	Array array;
+	Sort sort;
+
+	void init(System::Windows::Forms::TextBox^);// , System::Windows::Forms::Label^);
+	
+	
+}program;
 
 
 
-//#include "sort.cpp"
+#include "sort.cpp"
