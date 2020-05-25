@@ -23,8 +23,10 @@ public:
 		int sorted[n];
 
 	public:
-		void generate(int*);
-		void output(string);
+		void generate();// int*);
+		void copy();
+		void output(string, int);
+		//int* get_array();
 	};
 
 	class Sort
@@ -41,6 +43,7 @@ public:
 	Sort sort;
 
 	void init(System::Windows::Forms::TextBox^);// , System::Windows::Forms::Label^);
+	string get_dir();
 	
 	
 }program;
