@@ -5,6 +5,7 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 
+
 [STAThread]
 
 //void __clrcall WinMain()//array<String^>^ args) //
@@ -16,10 +17,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	coursework1::GUI form;
 	Application::Run(%form);
 
-	//srand((unsigned)time(0));
 	srand((unsigned)time(NULL));
-
-
 
 }
 

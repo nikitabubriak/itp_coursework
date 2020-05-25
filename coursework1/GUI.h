@@ -168,7 +168,7 @@ namespace coursework1 {
 	}
 	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) 
 	{
-		program.init(textBox1);
+		program.set_dir(textBox1);
 		button4->Enabled = true;
 	}
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -177,11 +177,15 @@ namespace coursework1 {
 	{
 		program.array.copy();
 
+		program.sort.merge_divide(program.array.get_array(), m, n);
+
 		program.array.output(program.get_dir(), 1);
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
 		program.array.copy();
+
+
 
 		program.array.output(program.get_dir(), 2);
 	}
@@ -189,14 +193,14 @@ namespace coursework1 {
 	{
 		program.array.copy();
 
+
+
 		program.array.output(program.get_dir(), 3);
 	}
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
 		program.array.generate();
 		program.array.output(program.get_dir(), 0);
-		
-
 
 		//button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 		//button4->Enabled = false;

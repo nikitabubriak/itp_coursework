@@ -1,15 +1,19 @@
 #pragma once
 
+#include "GUI.h"
+
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 #include <ctime>
-
-#include "GUI.h"
 
 using namespace std;
 
-const int n = 1024;
+const int 
+m = 0, 
+n = 1024;
+
 
 
 class Program
@@ -26,23 +30,24 @@ public:
 		void generate();// int*);
 		void copy();
 		void output(string, int);
-		//int* get_array();
-	};
+		int* get_array();
+
+	}array;
 
 	class Sort
 	{
 
 
 	public:
-		void merge();
+		void merge_divide(int*, int, int);
+		void merge_sort(int*, int, int, int);
+
 		void quick();
 		void tree();
-	};
 
-	Array array;
-	Sort sort;
+	}sort;
 
-	void init(System::Windows::Forms::TextBox^);// , System::Windows::Forms::Label^);
+	void set_dir(System::Windows::Forms::TextBox^);// , System::Windows::Forms::Label^);
 	string get_dir();
 	
 	

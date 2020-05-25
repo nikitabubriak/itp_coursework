@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-void Program::init(System::Windows::Forms::TextBox ^textbox)//, System::Windows::Forms::Label ^label)
+void Program::set_dir(System::Windows::Forms::TextBox ^textbox)//, System::Windows::Forms::Label ^label)
 {
 	System::String^ managed_s = textbox->Text;
 	msclr::interop::marshal_context context;
@@ -18,16 +18,21 @@ void Program::init(System::Windows::Forms::TextBox ^textbox)//, System::Windows:
 
 }
 
+
+
 string Program::get_dir()
 {
 	//string dir = this->directory;
 	return this->directory;
 }
 
-/*int* Program::Array::get_array()
+
+
+int* Program::Array::get_array()
 {
-	return 0;
-}*/
+	return this->sorted;
+}
+
 
 
 void Program::Array::generate()//int *a)
@@ -40,6 +45,7 @@ void Program::Array::generate()//int *a)
 		//a++;
 	}
 }
+
 
 
 void Program::Array::copy()//int *a)
@@ -81,11 +87,12 @@ void Program::Array::output(string output, int s)
 			if (i != 0 && i % 16 == 0) outfile << endl;
 		}
 	}
+
 	else
 	{
-		for (int i = 0; i < n; i++)
+		for (int i = 1; i <= n; i++)
 		{
-			outfile << this->sorted[i] << ' ';
+			outfile << this->sorted[i - 1] << ' ';
 			if (i != 0 && i % 16 == 0) outfile << endl;
 		}
 	}
@@ -95,3 +102,76 @@ void Program::Array::output(string output, int s)
 
 
 
+void Program::Sort::merge_divide(int *a, int low, int high)
+{
+	int mid;
+
+	if (low < high) 
+	{
+		mid = (low + high) / 2;
+
+		merge_divide(a, low, mid);
+		merge_divide(a, mid + 1, high);
+
+		merge_sort(a, low, high, mid);
+	}
+}
+
+
+
+void Program::Sort::merge_sort(int *a, int low, int high, int mid)
+{
+	int t[n + 1];
+
+	int i = low, 
+		j = mid + 1, 
+		k = m;
+
+	while (i <= mid && j <= high) 
+	{
+		if (a[i] <= a[j]) 
+		{
+			t[k] = a[i];
+			k++; 
+			i++;
+		}
+
+		else 
+		{
+			t[k] = a[j];
+			k++; 
+			j++;
+		}
+	}
+
+	while (i <= mid) 
+	{
+		t[k] = a[i];
+		k++; 
+		i++;
+	}
+ 
+	while (j <= high) 
+	{
+		t[k] = a[j];
+		k++; 
+		j++;
+	}
+
+	for (i = low; i <= high; i++) 
+	{
+		a[i] = t[i - low];
+	}
+}
+
+void Program::Sort::quick()
+{
+
+}
+
+
+
+void Program::Sort::tree()
+{
+
+}
