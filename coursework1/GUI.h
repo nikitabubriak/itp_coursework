@@ -202,6 +202,8 @@ namespace coursework1 {
 
 	private: System::Void GUI_Load(System::Object^  sender, System::EventArgs^  e) 
 	{
+		//initial GUI actions when launched
+
 		button1->Enabled = false;
 		button2->Enabled = false;
 		button3->Enabled = false;
@@ -215,6 +217,7 @@ namespace coursework1 {
 
 	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) 
 	{
+		//set working directory for output
 
 		program.set_dir(textBox1);
 		button4->Enabled = true;
@@ -222,6 +225,7 @@ namespace coursework1 {
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e)
 	{
+		//merge sort
 
 		program.array.copy();
 
@@ -237,6 +241,7 @@ namespace coursework1 {
 
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
+		//quick sort
 
 		program.array.copy();
 
@@ -252,6 +257,7 @@ namespace coursework1 {
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
+		//tree sort
 
 		program.array.copy();
 
@@ -267,6 +273,7 @@ namespace coursework1 {
 
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
+		//random array generation
 
 		srand((unsigned)time(NULL));
 		program.array.generate();

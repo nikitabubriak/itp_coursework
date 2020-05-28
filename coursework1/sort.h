@@ -12,22 +12,25 @@
 using namespace std;
 
 const int 
-	m = 0, 
-	n = 1024;
+	m = 0,		//array first index
+	n = 1024;	//array size
 
+//primary class
 class Program
 {
-	string directory;
+	string directory; //working directory storage
 
 public:
 
+	//data processing class
 	class Array
 	{
-		int random[n];
-		int sorted[n];
+		//arrays for storing data to output
+		int random[n]; //can be copied in order to sort with different algorithms at once; stores random data
+		int sorted[n]; //is identical to random array when copied; after sorting stores sorted data
 
 	public:
-
+		//basic array processing methods
 		void generate();
 		void copy();
 		void output(string, int);
@@ -35,11 +38,13 @@ public:
 
 	}array;
 
+	//sorting algorithm class
 	struct Sort
 	{
-
+		//merge sort
 		class Merge
 		{
+			//divide and conquer
 			void sort(int*, int, int, int);
 		public:
 			void divide(int*, int, int);
@@ -47,9 +52,10 @@ public:
 		}merge;
 
 
-
+		//quick sort
 		class Quick
 		{
+			//divide and conquer
 			void swap(int*, int*);
 			int  partition(int*, int, int);
 		public:
@@ -58,10 +64,12 @@ public:
 		}quick;
 
 
-
+		//tree sort
 		class Tree
 		{
 			vector<int> temp;
+
+			//binary search tree
 
 			struct Node
 			{
@@ -79,6 +87,7 @@ public:
 
 	}sort;
 
+	//working directory's setter and getter
 	void   set_dir(System::Windows::Forms::TextBox^);
 	string get_dir();
 	

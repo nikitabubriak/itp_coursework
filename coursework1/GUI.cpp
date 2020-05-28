@@ -3,6 +3,8 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
+//main function
+
 [STAThread]
 
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -13,4 +15,3 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	coursework1::GUI form;
 	Application::Run(%form);
 }
-
