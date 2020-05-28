@@ -12,10 +12,8 @@
 using namespace std;
 
 const int 
-m = 0, 
-n = 1024;
-
-
+	m = 0, 
+	n = 1024;
 
 class Program
 {
@@ -30,7 +28,7 @@ public:
 
 	public:
 
-		void generate();// int*);
+		void generate();
 		void copy();
 		void output(string, int);
 		int* get_array();
@@ -81,7 +79,7 @@ public:
 
 	}sort;
 
-	void   set_dir(System::Windows::Forms::TextBox^);// , System::Windows::Forms::Label^);
+	void   set_dir(System::Windows::Forms::TextBox^);
 	string get_dir();
 	
 }program;

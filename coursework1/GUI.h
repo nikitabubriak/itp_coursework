@@ -208,17 +208,21 @@ namespace coursework1 {
 		button4->Enabled = false;
 		label2->Visible = false;
 
-		textBox1->Text = "D:/KPI/OP2";
+		//==============================
+		//textBox1->Text = "D:/KPI/OP2";
+		//==============================
 	}
 
 	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) 
 	{
+
 		program.set_dir(textBox1);
 		button4->Enabled = true;
 	}
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e)
 	{
+
 		program.array.copy();
 
 		program.sort.merge.divide(program.array.get_array(), m, n-1);
@@ -233,6 +237,7 @@ namespace coursework1 {
 
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
+
 		program.array.copy();
 
 		program.sort.quick.sort(program.array.get_array(), m, n-1);
@@ -247,6 +252,7 @@ namespace coursework1 {
 
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
+
 		program.array.copy();
 
 		program.sort.tree.create(program.array.get_array(), m, n);
@@ -261,6 +267,7 @@ namespace coursework1 {
 
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
+
 		srand((unsigned)time(NULL));
 		program.array.generate();
 		program.array.output(program.get_dir(), 0);
@@ -276,12 +283,11 @@ namespace coursework1 {
 		button2->Text = "Quick sort";
 		button3->Text = "Tree sort";
 		label3->Text = "[Complexity]";
-
-		//button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 	}
 
 private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
 }
+
 };
 
 }

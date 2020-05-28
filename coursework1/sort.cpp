@@ -7,12 +7,12 @@ using namespace std;
 
 
 
-void Program::set_dir(System::Windows::Forms::TextBox ^textbox)//, System::Windows::Forms::Label ^label)
+void Program::set_dir(System::Windows::Forms::TextBox ^textbox)
 {
 	System::String^ managed_s = textbox->Text;
 	msclr::interop::marshal_context context;
 	std::string standard_s = context.marshal_as<std::string>(managed_s);
-	//label->Text = managed_s;
+
 	this->directory = standard_s;
 }
 
@@ -20,26 +20,22 @@ void Program::set_dir(System::Windows::Forms::TextBox ^textbox)//, System::Windo
 
 string Program::get_dir()
 {
-	//string dir = this->directory;
 	return this->directory;
 }
 
 
 
-void Program::Array::generate()//int *a)
+void Program::Array::generate()
 {
 	for (int i = 0; i < n; i++)
 	{
 		this->random[i] = rand() % n + 1;
-		//*this->random++;
-		//*a = rand() % n + 1;
-		//a++;
 	}
 }
 
 
 
-void Program::Array::copy()//int *a)
+void Program::Array::copy()
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -68,7 +64,7 @@ void Program::Array::output(string output, int s)
 	}
 
 	ofstream outfile(out);
-	//if (!outfile.is_open()) { cout << "Error. Cannot open output file\n"; return; }
+	if (!outfile.is_open()) return;
 
 	if (s == 0)
 	{
@@ -179,9 +175,9 @@ void Program::Sort::Quick::sort(int *a, int low, int high)
 
 void Program::Sort::Quick::swap(int *a, int *b)
 {
-	int t = *a;
-	*a = *b;
-	*b = t;
+	int  t = *a;
+		*a = *b;
+		*b = t;
 }
 
 
@@ -209,7 +205,6 @@ int Program::Sort::Quick::partition(int *a, int low, int high)
 
 void Program::Sort::Tree::create(int *a, int low, int high)
 {
-
 	Node *root = NULL;
 
 	for (int i = low; i < high; i++)
