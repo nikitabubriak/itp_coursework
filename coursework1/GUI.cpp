@@ -17,7 +17,5 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	coursework1::GUI form;
 	Application::Run(%form);
 
-	srand((unsigned)time(NULL));
-
 }
 

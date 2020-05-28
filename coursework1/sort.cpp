@@ -14,7 +14,6 @@ void Program::set_dir(System::Windows::Forms::TextBox ^textbox)//, System::Windo
 	std::string standard_s = context.marshal_as<std::string>(managed_s);
 	//label->Text = managed_s;
 	this->directory = standard_s;
-
 }
 
 
@@ -64,7 +63,7 @@ void Program::Array::output(string output, int s)
 			break;
 	case 3: out += "/tree_sort.txt";
 			break;
-	default: out += "/error.txt";
+	default:out += "/error.txt";
 			break;
 	}
 
@@ -105,7 +104,7 @@ void Program::Sort::Merge::divide(int *a, int low, int high)
 {
 	int mid;
 
-	if (low < high) 
+	if (low < high)
 	{
 		mid = (low + high) / 2;
 
@@ -120,44 +119,44 @@ void Program::Sort::Merge::divide(int *a, int low, int high)
 
 void Program::Sort::Merge::sort(int *a, int low, int high, int mid)
 {
-	int t[n + 1];
+	int t[n - m + 1];
 
-	int i = low, 
-		j = mid + 1, 
+	int i = low,
+		j = mid + 1,
 		k = m;
 
-	while (i <= mid && j <= high) 
+	while (i <= mid && j <= high)
 	{
-		if (a[i] <= a[j]) 
+		if (a[i] <= a[j])
 		{
 			t[k] = a[i];
-			k++; 
+			k++;
 			i++;
 		}
 
-		else 
+		else
 		{
 			t[k] = a[j];
-			k++; 
+			k++;
 			j++;
 		}
 	}
 
-	while (i <= mid) 
+	while (i <= mid)
 	{
 		t[k] = a[i];
-		k++; 
+		k++;
 		i++;
 	}
- 
-	while (j <= high) 
+
+	while (j <= high)
 	{
 		t[k] = a[j];
-		k++; 
+		k++;
 		j++;
 	}
 
-	for (i = low; i <= high; i++) 
+	for (i = low; i <= high; i++)
 	{
 		a[i] = t[i - low];
 	}
@@ -208,7 +207,62 @@ int Program::Sort::Quick::partition(int *a, int low, int high)
 
 
 
-void Program::Sort::Tree::tree()
+void Program::Sort::Tree::create(int *a, int low, int high)
 {
 
+	Node *root = NULL;
+
+	for (int i = low; i < high; i++)
+	{
+		root = insert(root, a[i]);
+	}
+
+	output(root);
+
+	for (int i = low; i < high; i++)
+	{
+		a[i] = temp[i];
+	}
+
+	temp.clear();
+}
+
+
+
+Program::Sort::Tree::Node* Program::Sort::Tree::new_node(int new_data)
+{
+	Node *temp = new Node();
+
+	temp->data = new_data;
+	temp->left = NULL;
+	temp->right = NULL;
+
+	return temp;
+}
+
+
+
+Program::Sort::Tree::Node* Program::Sort::Tree::insert(Node *node, int new_data)
+{
+
+	if (node == NULL)			return new_node(new_data);
+
+	if (new_data < node->data)	node->left = insert(node->left, new_data);
+	else						node->right = insert(node->right, new_data);
+
+	return node;
+}
+
+
+
+void Program::Sort::Tree::output(Node* root)
+{
+	if (root != NULL)
+	{
+		output(root->left);
+
+		temp.push_back(root->data);
+
+		output(root->right);
+	}
 }

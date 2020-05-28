@@ -7,6 +7,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 using namespace std;
 
@@ -38,25 +39,43 @@ public:
 
 	struct Sort
 	{
-		struct Merge
+
+		class Merge
 		{
-			void divide(int*, int, int);
 			void sort(int*, int, int, int);
+		public:
+			void divide(int*, int, int);
 
 		}merge;
 
-		struct Quick
+
+
+		class Quick
 		{
-			void sort(int*, int, int);
 			void swap(int*, int*);
 			int  partition(int*, int, int);
+		public:
+			void sort(int*, int, int);
 
 		}quick;
-		
-		struct Tree
-		{
-			void tree();
 
+
+
+		class Tree
+		{
+			vector<int> temp;
+
+			struct Node
+			{
+				int data;
+				Node *left, *right;
+			};
+
+			Node *new_node(int);
+			Node *insert(Node*, int);
+			void output(Node*);
+		public:
+			void create(int*, int, int);
 
 		}tree;
 
@@ -64,7 +83,6 @@ public:
 
 	void   set_dir(System::Windows::Forms::TextBox^);// , System::Windows::Forms::Label^);
 	string get_dir();
-	
 	
 }program;
 
